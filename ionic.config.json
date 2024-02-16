@@ -1,0 +1,7 @@
+{
+  "name": "score-fusion-clone",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

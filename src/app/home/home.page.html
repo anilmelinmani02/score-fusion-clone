@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="flex bg-white justify-bet item-center ion-padding">
+      <div class="logoImg">
+        <img src="../../assets/img/score-fusion-logo.png" alt="" width="100%">
+      </div>
+      <div>
+        <ion-icon name="reorder-three-outline" size="large"></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<div class="sec1">
+  <div class="bg-blue flex ion-padding justify-end">
+    <img src="../../assets/img/menu-icon.png" width="30px" class="mx-2">
+  </div>
+
+  <div class="top-sec">
+      <div class="title">
+    Welcome Back John
+  </div>
+  <div class="flex justify-center">
+    <div class="blue-button">
+      Get New 3B Report!
+    </div>
+  </div>
+  <div class="flex gap-1 justify-center item-center pt-2 pb-4">
+    <span class="sub-title">Next Report:</span>
+    <span class="text-cyan"> 24 Days</span>
+  </div>
+  </div>
+
+</div>
+  <div class="ion-padding mt-4 flex justify-center">
+    <div class="img-sec">
+    <ion-img src="../../assets/img/dashboard-img.jpg"></ion-img>
+    </div>
+  </div>
+  <div class="billing-section">
+    <div>
+        <div class="flex flex-col item-center">
+          <img src="../../assets/img/report-icon.png" width="50px" alt="">
+          <span class="card-title pt-2">Latest Scores from Dec 4, 2023</span>
+          <span class="card-subtitle pt-1">Credit Report Data Using Vantage 3.0 model</span>
+          <div class="flex gap-1 justify-center item-center pt-3">
+            <span class="sub-title">Next Update:</span>
+            <span class="text-cyan"> 24 Days</span>
+          </div>
+          <span class="card-subtitle pb-4">Your New Scores Await!</span>
+        </div>
+    
+    </div>
+
+  </div>
+
+<div class="score-container pb-4">
+  <div *ngFor="let card of scoreData" class="summary-sec mt-4">
+    <div class="score-box-graph flex flex-col item-center justify-center ion-padding">
+      <div class="summary-logo">
+        <img [src]="card.img" width="100%" height="100%" alt="">
+      </div>
+      <div class="map-img">
+        <img src="../../assets/img/map.jpg" alt="">
+      </div>
+      <span class="score-increse" [ngClass]="{'neg-score-inc-text': (card.increseScore | convertToNumber) < 0}"> <span *ngIf="(card.increseScore | convertToNumber) > 0">+</span> {{card.increseScore | convertToNumber}}</span>
+      <div class="flex starting-score item-center pt-2">
+        Starting Score: 
+        <b class="count">{{card.startScore }}</b>
+      </div>
+      <div class="score-table pt-2">
+        <div class="box flex">
+          <span class="box-text">Credits Inquiries</span>
+          <b class="count">{{card.creditInq}}</b>
+        </div>
+        <div class="box flex">
+          <span class="box-text">Public Record</span>
+          <b class="count">{{card.publicRec}}</b>
+        </div>
+        <div class="box flex">
+          <span class="box-text">Collection</span>
+          <b >{{card.collection}}</b>
+        </div>
+        <div class="box flex">
+          <span class="box-text">Last Payment</span>
+          <b class="count">{{card.lp}}</b>
+        </div>
+      </div>
+      
+      <div class="flex state-container gap-1 pt-1 width-full">
+        <div class="fixed-box positive-bg flex flex-col">
+          <b class="count positive-color">{{card.positive.count}}</b>
+          <span class="box-text positive-color">{{card.positive.text}}</span>
+        </div>
+        <div class="fixed-box neg-bg flex flex-col">
+          <b class="count neg-color">{{card.negative.count}}</b>
+          <span class="box-text neg-color">{{card.negative.text}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="score-box-text">
+      <div class="flex flex-col item-center p-2">
+        <span class="credit-usage">Credit Usage</span>
+        <b class="credits-percent">{{card.secondCard.credits}}</b>
+        <div class="last-month">
+          Last Month: <strong>{{card.secondCard.lastMonth}}</strong>
+        </div>
+        <div class="score-increse p-2" [ngClass]="{'neg-score-inc-text': (card.increseScore | convertToNumber) < 0}"> <span *ngIf="(card.secondCard.scoreChange | convertToNumber) > 0">+</span>{{card.secondCard.scoreChange}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- phon sec -->
+<div class="ion-padding">
+<div class="phone-sec mt-4 ion-padding">
+<div class="flex flex-col item-center">
+  <span class="card-title pt-2">Want all your ScoreFusion on your phone?</span>
+  <span class="card-subtitle pt-2">Get all your updates, scores &amp;&nbsp;alerts by downloading the ScoreFusion mobile app today!
+  </span>
+  <div class="mob-img">
+    <img src="../../assets/img/home-phones.png" alt="" width="100%" height="100%">
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- last sec -->
+<div class="ion-padding">
+  <div class="last-container">
+  <div *ngFor="let card of lastSec" class="last-card-sec ion-padding" [style.background-color]="card.bg" [style.border]="card.borderStyle" [style.border-color]="card.bg">
+  <div class="flex flex-col item-center">
+    <div class="fles justify-center item-center">
+      <img [src]="card.imgPath" alt="" width="40px">
+    </div>
+    <span class="account-card-title pt-2">{{card.cardTitle}}</span>
+    <span class="account-card-subtitle text-center pt-2">{{card.subtitle}}</span>
+  </div>
+  </div>
+  </div>
+</div>
+
+</ion-content>
